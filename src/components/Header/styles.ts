@@ -34,7 +34,7 @@ export const ContentLeft = styled.div`
     display: flex;
     padding: 0.5rem;
     background-color: ${({ theme }) => theme['purple-300']};
-    color: ${({ theme }) => theme['purple-800']};
+    color: ${({ theme }) => theme['purple-500']};
     border-radius: 6px;
     gap: 0.25rem;
   }
