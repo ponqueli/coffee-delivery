@@ -13,3 +13,9 @@ export const MenuContainer = styled.section`
     color: ${({ theme }) => theme['grey-800']};
   }
 `
+
+export const CoffeeContainerList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+`
