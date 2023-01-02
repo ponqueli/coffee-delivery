@@ -3,13 +3,14 @@ import styled from 'styled-components'
 export const MenuContainer = styled.section`
   width: 100%;
   max-width: 70rem;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 2rem;
+  padding: 0px 0.75rem;
+  margin: 0 auto;
 
   h1 {
     font-family: 'Baloo 2', sans-serif;
+    font-size: 2rem;
     font-weight: 800;
+    margin: 3.375rem 0;
     color: ${({ theme }) => theme['grey-800']};
   }
 `
