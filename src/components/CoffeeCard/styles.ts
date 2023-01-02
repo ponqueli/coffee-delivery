@@ -69,3 +69,56 @@ export const AddToCart = styled.div`
     font-size: 1.5rem;
   }
 `
+
+export const AddCartWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`
+export const ContainerAmountCoffee = styled.div`
+  grid-column: 2 / 2;
+
+  width: 4.5rem;
+  padding: 0.563rem;
+  background: ${({ theme }) => theme['grey-300']};
+  border-radius: 0.375rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.125rem;
+
+  input {
+    text-align: center;
+    width: 1.25rem;
+    background: transparent;
+    border: 0px solid transparent;
+    font-size: 1rem;
+    color: ${({ theme }) => theme['grey-800']};
+
+    &[type='number']::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    color: ${({ theme }) => theme['purple-500']};
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+
+    &:disabled {
+      color: ${({ theme }) => theme['grey-400']};
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled):hover {
+      color: ${({ theme }) => theme['purple-800']};
+    }
+  }
+`
