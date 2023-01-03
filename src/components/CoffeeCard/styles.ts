@@ -19,8 +19,8 @@ export const CoffeeCardContainer = styled.div`
   img {
     width: 7.5rem;
     height: 7.5rem;
-    position: absolute;
-    top: -30px;
+    position: relative;
+    top: -0.5rem;
   }
 
   h2 {

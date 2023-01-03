@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 export const MenuContainer = styled.section`
-  width: 100%;
-  max-width: 70rem;
+  max-width: 1144px;
   padding: 0px 0.75rem;
   margin: 0 auto;
 
