@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { SectionAddress } from '../../components/SectionAddress'
 import * as zod from 'zod'
 import { AddressAndPaymentContainer, CheckoutContainer } from './styles'
+import { SectionPayment } from '../../components/SectionPayment'
 
 const newFormValidationSchema = zod.object({
   cep: zod.string().min(1, 'Informe o CEP'),
@@ -50,18 +51,19 @@ export function Checkout() {
   }
 
   return (
-    <CheckoutContainer onSubmit={handleSubmit(handleNewForm)}>
-      <FormProvider {...newForm}>
+    <FormProvider {...newForm}>
+      <CheckoutContainer onSubmit={handleSubmit(handleNewForm)}>
         <section>
           <h1>Complete seu pedido</h1>
           <AddressAndPaymentContainer>
             <SectionAddress />
+            <SectionPayment />
           </AddressAndPaymentContainer>
         </section>
         <section>
           <h1>Cafés selecionados</h1>
         </section>
-      </FormProvider>
-    </CheckoutContainer>
+      </CheckoutContainer>
+    </FormProvider>
   )
 }

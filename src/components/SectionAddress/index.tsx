@@ -1,4 +1,4 @@
-import { MapPinLine, CurrencyDollar } from 'phosphor-react'
+import { MapPinLine } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
 import {
   ContainerAddress,
