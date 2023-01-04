@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const EmptyContainer = styled.div`
+export const Container = styled.div`
   padding: 2.5rem;
   width: 28rem;
   background: ${({ theme }) => theme['grey-200']};

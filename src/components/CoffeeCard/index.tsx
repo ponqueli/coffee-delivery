@@ -8,22 +8,26 @@ import {
 } from './styles'
 import { useState } from 'react'
 import { ButtonCart } from '../ButtonCart'
-
-interface CoffeeProps {
-  id: number
-  name: string
-  description: string
-  price: number
-  photo: string
-  tags: string[]
-}
+import { Cart, useCart } from '../../hooks/useCart'
+import { CoffeeFormatted } from '../CoffeesMenu'
 
 interface CoffeeCardProps {
-  coffee: CoffeeProps
+  coffee: CoffeeFormatted
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
   const [amount, setAmount] = useState(0)
+  const { addCart } = useCart()
+
+  function handleAddCart(product: Cart) {
+    const newProduct = {
+      ...product,
+      amount,
+    }
+
+    addCart(newProduct)
+    setAmount(1)
+  }
 
   function handleDecrementAmount() {
     if (amount > 0) {
@@ -70,7 +74,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
           <ButtonCart
             variant="purple"
             disabled={amount === 0}
-            onHandleClick={() => {}}
+            onHandleClick={() => handleAddCart(coffee)}
           />
         </AddCartWrapper>
       </AddToCart>
