@@ -7,6 +7,7 @@ import { SectionAddress } from '../../components/SectionAddress'
 import * as zod from 'zod'
 import { AddressAndPaymentContainer, CheckoutContainer } from './styles'
 import { SectionPayment } from '../../components/SectionPayment'
+import { SectionCoffeeSelected } from '../../components/SectionCoffeeSelected'
 
 const newFormValidationSchema = zod.object({
   cep: zod.string().min(1, 'Informe o CEP'),
@@ -62,6 +63,9 @@ export function Checkout() {
         </section>
         <section>
           <h1>Cafés selecionados</h1>
+          <div>
+            <SectionCoffeeSelected />
+          </div>
         </section>
       </CheckoutContainer>
     </FormProvider>

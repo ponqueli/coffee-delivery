@@ -33,11 +33,11 @@ export const RadioBox = styled.button<RadioBoxProps>`
 
   span {
     color: ${({ theme, isActive }) =>
-    isActive ? theme['purple-800'] : theme['grey-500']};
+      isActive ? theme['purple-800'] : theme['grey-500']};
   }
 
   svg {
     color: ${({ theme, isActive }) =>
-    isActive ? theme['purple-800'] : theme['grey-500']};
+      isActive ? theme['purple-800'] : theme['grey-500']};
   }
 `
