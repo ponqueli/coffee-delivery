@@ -1,6 +1,11 @@
 import { MapPinLine, CurrencyDollar } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
-import { ContainerAddress, ContainerInputs } from './styles'
+import {
+  ContainerAddress,
+  ContainerInputs,
+  ContentInputComplement,
+  InputComplement,
+} from './styles'
 import { TitleSection } from '../TitleSection'
 import { Input } from '../Input'
 
@@ -42,6 +47,32 @@ export function SectionAddress() {
           className="number"
           {...register('number')}
           error={errors.number?.message}
+        />
+        <ContentInputComplement>
+          <InputComplement
+            placeholder="Complemento"
+            className="complement"
+            {...register('complement')}
+          />
+          <p>Opcional</p>
+        </ContentInputComplement>
+        <Input
+          placeholder="Bairro"
+          className="district"
+          {...register('district')}
+          error={errors.district?.message}
+        />
+        <Input
+          placeholder="Cidade"
+          className="city"
+          {...register('city')}
+          error={errors.city?.message}
+        />
+        <Input
+          placeholder="UF"
+          className="uf"
+          {...register('uf')}
+          error={errors.uf?.message}
         />
       </ContainerInputs>
     </ContainerAddress>
