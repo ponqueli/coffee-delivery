@@ -8,7 +8,7 @@ import {
 } from './styles'
 import { useState } from 'react'
 import { ButtonCart } from '../ButtonCart'
-import { Cart, useCart } from '../../hooks/useCart'
+import { useCart, Cart } from '../../hooks/useCart'
 import { CoffeeFormatted } from '../CoffeesMenu'
 
 interface CoffeeCardProps {
@@ -16,7 +16,7 @@ interface CoffeeCardProps {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
-  const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState(1)
   const { addCart } = useCart()
 
   function handleAddCart(product: Cart) {
@@ -26,7 +26,6 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
     }
 
     addCart(newProduct)
-    setAmount(1)
   }
 
   function handleDecrementAmount() {
@@ -41,22 +40,17 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
 
   return (
     <CoffeeCardContainer>
-      <img src={`/${coffee.photo}`} alt={coffee.name} />
+      <img src={`/${coffee.photo}`} alt={coffee.title} />
       <Tags>
         {coffee.tags.map((tag) => (
           <span key={tag}>{tag}</span>
         ))}
       </Tags>
-      <h2>{coffee.name}</h2>
+      <h2>{coffee.title}</h2>
       <p className="description">{coffee.description}</p>
 
       <AddToCart>
-        <span>
-          R$ {` `}
-          {coffee.price.toLocaleString('pt-BR', {
-            minimumFractionDigits: 2,
-          })}
-        </span>
+        <span>{coffee.priceFormatted}</span>
         <AddCartWrapper>
           <ContainerAmountCoffee>
             <button

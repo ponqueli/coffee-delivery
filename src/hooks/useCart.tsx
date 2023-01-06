@@ -66,9 +66,12 @@ export function CartProvider({ children }: CartProviderProps) {
 
     if (productIndex === -1) {
       copyCart.push(product)
-      toast.success('Item adicinado no carrinho.')
+      toast.success(`${product.title} adicinado ao carrinho`)
     } else {
       copyCart[productIndex].amount += product.amount
+      toast.success(
+        `Quantidade atualizada para ${copyCart[productIndex].amount} unidades de ${product.title}`,
+      )
     }
 
     setCart(copyCart)

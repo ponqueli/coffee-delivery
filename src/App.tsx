@@ -4,17 +4,20 @@ import { GlobalStyle } from './styles/global'
 import { Router } from './Routes'
 import { BrowserRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
+import { CartProvider } from './hooks/useCart'
 import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        <Router />
-        <ToastContainer />
-      </BrowserRouter>
-      <GlobalStyle />
-    </ThemeProvider>
+    <CartProvider>
+      <ThemeProvider theme={defaultTheme}>
+        <BrowserRouter>
+          <Router />
+          <ToastContainer />
+        </BrowserRouter>
+        <GlobalStyle />
+      </ThemeProvider>
+    </CartProvider>
   )
 }
 

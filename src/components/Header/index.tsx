@@ -3,8 +3,11 @@ import { ContentLeft, HeaderContainer, MainContent } from './styles'
 import coffeeLogo from '../../assets/Logo.svg'
 import { ButtonCart } from '../ButtonCart'
 import { NavLink } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 export function Header() {
+  const { cart } = useCart()
+  const totalProducts = cart.length ? cart.length : null
   return (
     <HeaderContainer>
       <MainContent>
@@ -17,7 +20,11 @@ export function Header() {
             <span>Ribeirão Preto, SP</span>
           </div>
           <NavLink to="/checkout" title="checkout">
-            <ButtonCart amount={10} variant="yellow" onHandleClick={() => {}} />
+            <ButtonCart
+              amount={totalProducts}
+              variant="yellow"
+              onHandleClick={() => {}}
+            />
           </NavLink>
         </ContentLeft>
       </MainContent>

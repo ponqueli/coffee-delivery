@@ -3,7 +3,7 @@ import { ButtonCartContainer } from './styles'
 
 interface ButtonCartProps {
   variant: 'yellow' | 'purple'
-  amount?: number
+  amount?: number | null
   disabled?: boolean
   onHandleClick: () => void
 }

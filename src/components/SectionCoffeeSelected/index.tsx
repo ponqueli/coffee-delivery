@@ -4,6 +4,7 @@ import { Container } from './styles'
 
 export function SectionCoffeeSelected() {
   const { cart, priceFormattedAndSubTotal } = useCart()
+  console.log(priceFormattedAndSubTotal)
   return cart?.length ? (
     <Container>
       {priceFormattedAndSubTotal.map((item) => (

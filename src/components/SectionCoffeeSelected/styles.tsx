@@ -7,6 +7,7 @@ export const Container = styled.div`
   border-radius: 0.375rem 2.75rem 0.375rem 2.75rem;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `
