@@ -54,8 +54,18 @@ export const Container = styled.div`
 
     transition: 0.3s;
 
+    svg {
+      color: ${({ theme }) => theme['purple-500']};
+      font-size: 1.25rem;
+    }
+
+    span {
+      color: ${({ theme }) => theme['purple-800']};
+      width: 100%;
+    }
+
     &:hover {
-      filter: brightness(0.9);
+      background: ${({ theme }) => theme['purple-300']};
     }
   }
 `

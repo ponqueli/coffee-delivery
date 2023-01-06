@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -8,22 +7,23 @@ import * as zod from 'zod'
 import { AddressAndPaymentContainer, CheckoutContainer } from './styles'
 import { SectionPayment } from '../../components/SectionPayment'
 import { SectionCoffeeSelected } from '../../components/SectionCoffeeSelected'
+import { useCart } from '../../hooks/useCart'
 
 const newFormValidationSchema = zod.object({
-  cep: zod.string().min(1, 'Informe o CEP'),
-  street: zod.string().min(1, 'Informe a Rua'),
-  number: zod.string().min(1, 'Informe o Número'),
+  cep: zod.string().min(8, 'CEP é obrigatório'),
+  street: zod.string().min(1, 'Rua é obrigatório'),
+  number: zod.string().min(1, 'Número é obrigatório'),
   complement: zod.string(),
-  district: zod.string().min(1, 'Informe o Bairro'),
-  city: zod.string().min(1, 'Informe a Cidade'),
-  uf: zod.string().min(1, 'Informe O Estado'),
+  district: zod.string().min(1, 'Bairro é obrigatório'),
+  city: zod.string().min(1, 'Cidade é obrigatório'),
+  uf: zod.string().min(2, 'UF é obrigatório'),
 })
 
 export type OrderData = zod.infer<typeof newFormValidationSchema>
 type NewFormData = OrderData
 
 export function Checkout() {
-  const [dataForm, setDataForm] = useState<NewFormData>()
+  const { clearCart } = useCart()
   const navigate = useNavigate()
 
   const newForm = useForm<NewFormData>({
@@ -43,11 +43,10 @@ export function Checkout() {
 
   function handleNewForm(data: NewFormData) {
     if (data !== undefined) {
-      setDataForm(data)
-      // clearCart()
-      navigate('/checkout/success')
+      clearCart()
+      navigate('/ConfirmedOrder', { state: data })
     } else {
-      toast.error('Something went wrong!')
+      return toast.error('Something went wrong!')
     }
   }
 

@@ -57,8 +57,8 @@ export function SelectedCoffees({ item }: SelectedCoffeesProps) {
           type="button"
           onClick={() => handleRemoveItem(item.id)}
         >
-          <Trash size={15} color="#8047F8" />
-          REMOVER
+          <Trash />
+          <span>REMOVER</span>
         </button>
       </div>
       <span>{item.subTotal}</span>

@@ -27,7 +27,7 @@ export const ButtonCartContainer = styled.button<ButtonProps>`
 
   svg {
     color: ${({ theme, variant }) =>
-    variant === 'purple' ? theme.white : theme['yellow-800']};
+      variant === 'purple' ? theme.white : theme['yellow-800']};
   }
 
   transition: background-color 0.2s;
@@ -39,7 +39,7 @@ export const ButtonCartContainer = styled.button<ButtonProps>`
 
   :not(:disabled):hover {
     background-color: ${({ theme, variant }) =>
-    variant === 'purple' ? theme['purple-500'] : theme['yellow-200']};
+      variant === 'purple' ? theme['purple-500'] : theme['yellow-200']};
   }
 
   > span {
