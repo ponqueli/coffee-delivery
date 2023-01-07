@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { InfoItem } from '../../components/InfoItem'
 import { defaultTheme } from '../../styles/themes/default'
 import { paymentMethods } from '../../components/PaymentMethodOptions'
-import confirmedOrderIllustration from '../../assets/illustration.svg'
+import image from '../../assets/Illustration.svg'
 
 interface LocationType {
   state: OrderData
@@ -73,8 +73,8 @@ export function ConfirmedOrder() {
         </InfoContainer>
       </section>
       <img
-        src={confirmedOrderIllustration}
-        alt="Ilustração de um entregador de café"
+        src={image}
+        alt="Imagem de um homem levando um produto em uma moto"
       />
     </Container>
   )
