@@ -9,7 +9,13 @@ import { SectionPayment } from '../../components/SectionPayment'
 import { SectionCoffeeSelected } from '../../components/SectionCoffeeSelected'
 import { useCart } from '../../hooks/useCart'
 
-const newFormValidationSchema = zod.object({
+enum PaymentMethods {
+  credit = 'credit',
+  debit = 'debit',
+  money = 'money',
+}
+
+const confirmOrderFormValidationSchema = zod.object({
   cep: zod.string().min(8, 'CEP é obrigatório'),
   street: zod.string().min(1, 'Rua é obrigatório'),
   number: zod.string().min(1, 'Número é obrigatório'),
@@ -17,42 +23,41 @@ const newFormValidationSchema = zod.object({
   district: zod.string().min(1, 'Bairro é obrigatório'),
   city: zod.string().min(1, 'Cidade é obrigatório'),
   uf: zod.string().min(2, 'UF é obrigatório'),
+  paymentMethod: zod.nativeEnum(PaymentMethods, {
+    errorMap: () => {
+      return { message: 'Informe o método de pagamento' }
+    },
+  }),
 })
 
-export type OrderData = zod.infer<typeof newFormValidationSchema>
-type NewFormData = OrderData
+export type OrderData = zod.infer<typeof confirmOrderFormValidationSchema>
+type ConfirmOrderFormData = OrderData
 
 export function Checkout() {
   const { clearCart } = useCart()
   const navigate = useNavigate()
 
-  const newForm = useForm<NewFormData>({
-    resolver: zodResolver(newFormValidationSchema),
+  const confirmOrderForm = useForm<ConfirmOrderFormData>({
+    resolver: zodResolver(confirmOrderFormValidationSchema),
     defaultValues: {
-      cep: '',
-      complement: '',
-      city: '',
-      number: '',
-      district: '',
-      street: '',
-      uf: '',
+      paymentMethod: undefined,
     },
   })
 
-  const { handleSubmit } = newForm
+  const { handleSubmit } = confirmOrderForm
 
-  function handleNewForm(data: NewFormData) {
+  function handleConfirmOrder(data: ConfirmOrderFormData) {
     if (data !== undefined) {
-      clearCart()
       navigate('/ConfirmedOrder', { state: data })
+      clearCart()
     } else {
       return toast.error('Something went wrong!')
     }
   }
 
   return (
-    <FormProvider {...newForm}>
-      <CheckoutContainer onSubmit={handleSubmit(handleNewForm)}>
+    <FormProvider {...confirmOrderForm}>
+      <CheckoutContainer onSubmit={handleSubmit(handleConfirmOrder)}>
         <section>
           <h1>Complete seu pedido</h1>
           <AddressAndPaymentContainer>

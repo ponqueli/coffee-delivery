@@ -7,7 +7,8 @@ export const InputContent = styled.div`
   position: relative;
 
   > p {
-    color: red;
+    color: ${({ theme }) => theme['red-500']};
+    font-size: 0.8rem;
   }
 `
 interface InputStyleInputBaseProps {

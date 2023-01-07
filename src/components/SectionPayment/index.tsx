@@ -1,14 +1,9 @@
-import { useState } from 'react'
-import { CurrencyDollar, CreditCard, Money, Bank } from 'phosphor-react'
-import { ContentPaymentMethod, PaymentContainer } from './styles'
+import { CurrencyDollar } from 'phosphor-react'
+import { PaymentContainer } from './styles'
 import { TitleSection } from '../TitleSection'
-import { PaymentMethod } from '../PaymentMethod'
+import { PaymentMethodOptions } from '../PaymentMethodOptions'
 
 export function SectionPayment() {
-  const [typePayment, setTypePayment] = useState<
-    'creditCard' | 'debitCard' | 'money'
-  >('creditCard')
-
   return (
     <PaymentContainer>
       <TitleSection
@@ -18,29 +13,7 @@ export function SectionPayment() {
         title="Pagamento"
         description="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
       />
-      <ContentPaymentMethod>
-        <PaymentMethod
-          onClick={() => setTypePayment('creditCard')}
-          isActive={typePayment === 'creditCard'}
-        >
-          <CreditCard size={16} />
-          <span>CARTÃO DE CRÉDITO</span>
-        </PaymentMethod>
-        <PaymentMethod
-          onClick={() => setTypePayment('debitCard')}
-          isActive={typePayment === 'debitCard'}
-        >
-          <Bank size={16} />
-          <span>CARTÃO DE DÉBITO</span>
-        </PaymentMethod>
-        <PaymentMethod
-          onClick={() => setTypePayment('money')}
-          isActive={typePayment === 'money'}
-        >
-          <Money size={16} />
-          <span>DINHEIRO</span>
-        </PaymentMethod>
-      </ContentPaymentMethod>
+      <PaymentMethodOptions />
     </PaymentContainer>
   )
 }

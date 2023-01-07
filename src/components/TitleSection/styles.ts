@@ -5,7 +5,7 @@ export const TitleAddress = styled.div`
   grid-template-columns: 2rem auto;
   grid-area: auto;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
   .iconLocation {
     grid-column: 1;
