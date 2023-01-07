@@ -86,8 +86,8 @@ export const ContainerAmountCoffee = styled.div`
     width: 1.25rem;
     background: transparent;
     border: 0px solid transparent;
-    padding: 0 0.3rem;
     font-size: 1rem;
+    text-align: center;
     color: ${({ theme }) => theme['grey-800']};
 
     &[type='number']::-webkit-inner-spin-button {
